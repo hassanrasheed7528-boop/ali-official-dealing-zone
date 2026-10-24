@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Private Admin • Ali Official</title><link rel="stylesheet" href="style.css"></head>
+<body class="admin-page">
+<header class="top"><div class="brand"><span class="logo">A</span><div><h1>PRIVATE <b>ADMIN PANEL</b></h1><p>AUTHORIZED OWNER ONLY</p></div></div><a class="admin-link" href="index.html">View store</a></header>
+<main class="admin-wrap">
+<section class="panel"><p class="eyebrow">OWNER ACCESS</p><h2>Admin Login</h2><p class="muted">Sign in with the Google account that you configured as the owner. Other accounts are denied.</p><button id="login" class="btn">Sign in with Google</button><button id="logout" class="btn secondary" hidden>Sign out</button><p id="authStatus" class="status" role="status">Not signed in</p></section>
+<section id="manager" class="panel" hidden><div class="section-head"><div><p class="eyebrow">INVENTORY</p><h2>Manage accounts</h2></div><span class="pill">OWNER</span></div>
+<form id="productForm" class="product-form">
+<input id="productId" type="hidden"><label>Account title<input id="title" required maxlength="80" placeholder="e.g. Evo Gun + Rare Bundles"></label>
+<div class="form-grid"><label>Price (PKR)<input id="price" required type="number" min="0" step="1" placeholder="5000"></label><label>Category<input id="category" maxlength="40" placeholder="Evo Gun / Rare Bundle"></label></div>
+<label>Image URL (optional)<input id="image" type="url" placeholder="https://..."></label><label>Short details<textarea id="details" rows="3" maxlength="500" placeholder="Level, bundles, evo guns, etc."></textarea></label>
+<div class="actions"><button class="btn" type="submit">Save account</button><button class="btn secondary" id="clearForm" type="button">Clear form</button></div><p id="formStatus" class="status"></p></form>
+<h3>Your listings</h3><div id="adminProducts" class="admin-products"></div></section>
+<section class="panel warning"><b>Important setup note</b><p>This panel uses Firebase Google Authentication and Firestore rules. Before publishing, set your own admin email and Firebase project config in <code>config.js</code>, then publish the included rules. A hidden link or a front-end-only password is not secure.</p></section>
+</main><script type="module" src="admin.js"></script></body></html>

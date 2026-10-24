@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isOwner() {
+      return request.auth != null
+        && request.auth.token.email == 'YOUR_OWN_GMAIL@gmail.com'
+        && request.auth.token.email_verified == true;
+    }
+    match /products/{productId} {
+      // Everyone can read the public store; only the verified owner can write.
+      allow read: if true;
+      allow create, update, delete: if isOwner();
+    }
+  }
+}
